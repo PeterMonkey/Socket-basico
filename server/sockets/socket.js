@@ -15,18 +15,25 @@ io.on('connection', (client) => {
     });
 
     //Escuchar el cliente
-    client.on('enviarMensaje', (mensaje, callback) => {
+    client.on('enviarMensaje', (data, callback) => {
+
+        console.log(data);
+
+        client.broadcast.emit('enviarMensaje', {
+            usuario: data.usuario,
+            mensaje: data.mensaje
+        })
 
         // console.log(mensaje);
-        if(mensaje.usuario){
-            callback({
-                resp: 'Todo salio bien'
-            });
-        } else {
-            callback({
-                resp: 'Todo salio mal!!'
-            });
-        }
+        // if(mensaje.usuario){
+        //     callback({
+        //         resp: 'Todo salio bien'
+        //     });
+        // } else {
+        //     callback({
+        //         resp: 'Todo salio mal!!'
+        //     });
+        // }
 
     })
 })

@@ -22,6 +22,6 @@ var socket = io();
         //Escuchar información
         socket.on('enviarMensaje', function(mensaje){
 
-            console.log(mensaje)
+            console.log('Servidor:', mensaje);
 
         })
